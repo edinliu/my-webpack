@@ -1,7 +1,10 @@
 # 簡介
 
-這是一個多用途的 Webpack 設定
+Webpack 設定
 
 # 使用方法
 
-- **自動安裝所需套件** npm run install-webpack
+1. git clone
+2. cp eazy-webpack/webpack /
+3. 修改 webpack.config.js
+4. npm run install-webpack
