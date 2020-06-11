@@ -1,0 +1,16 @@
+{
+  "repository": "",
+  "license": "",
+  "scripts": {
+    "build": "webpack --mode production --env=prod",
+    "start": "webpack-dev-server --mode development --env=dev",
+    "install-webpack": "webpack --env=install"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "shelljs": "^0.8.4",
+    "webpack": "latest",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
