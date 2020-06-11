@@ -24,6 +24,8 @@ function newHtmlWebpackPlugin(fileName, template) {
 module.exports = function (config) {
   config.plugins.push(
     newHtmlWebpackPlugin("index.html", global.PATH.src + "/index.html"),
+    newHtmlWebpackPlugin("message_board.html", global.PATH.src + "/index.html"),
+    newHtmlWebpackPlugin("for_print.html", global.PATH.src + "/index.html"),
   )
 }
 
