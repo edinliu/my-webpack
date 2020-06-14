@@ -1,6 +1,6 @@
 if (global.isInstall) {
   const script = "npm install react react-dom"
-  const scriptDev = "npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react styled-jsx react react-dom"
+  const scriptDev = "npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react styled-jsx"
   require('../helpers/install')(script)
   require('../helpers/install')(scriptDev)
 }
