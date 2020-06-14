@@ -24,11 +24,11 @@ module.exports = (env) => {
   // require('./webpack/scripts/babel-loader.react&styled-jsx')(config)
   require('./webpack/scripts/babel-loader.react')(config)
   require('./webpack/assets/html')(config)
-  // require('./webpack/settings/preact_alias')(config)//用dynamic-cdn會沒作用
+  // require('./webpack/scripts/preact_alias')(config)//用dynamic-cdn會沒作用
   if (env === "prod" || global.isInstall) {
     // require('./webpack/settings/dynamic-cdn')(config)
     require('./webpack/styles/styleProdRules')(config)
-    // require('./webpack/scripts/compression')(config)
+    // require('./webpack/settings/compression')(config)
   }
   if (env === "dev" || global.isInstall) {
     require("./webpack/settings/devServer")(config)
