@@ -2,13 +2,14 @@ const path = require("path");
 global.PATH = {
   src: "src",
   public: "public",
+  build: "build"
 }
 let config = {
   entry: {
     index: path.resolve(global.PATH.src, "index.js"),
   },
   output: {
-    path: path.resolve(global.PATH.public),
+    path: path.resolve(global.PATH.build),
     filename: "[name].js",
   },
   module: {
@@ -19,8 +20,9 @@ let config = {
 }
 module.exports = (env) => {
   global.isInstall = env === "install"
-  require('./webpack/assets/img-loader&file-loader&svgr')(config)
-  require('./webpack/scripts/babel-loader.react&styled-jsx')(config)
+  // require('./webpack/assets/img-loader&file-loader&svgr')(config)
+  // require('./webpack/scripts/babel-loader.react&styled-jsx')(config)
+  require('./webpack/scripts/babel-loader.react')(config)
   require('./webpack/assets/html')(config)
   // require('./webpack/settings/preact_alias')(config)//用dynamic-cdn會沒作用
   if (env === "prod" || global.isInstall) {
