@@ -1,6 +1,6 @@
 if (global.isInstall) {
   const script = "npm install preact"
-  require('../helpers/install')(script)
+  require('../helpers/shellExec')(script)
 }
 
 module.exports = function (config) {

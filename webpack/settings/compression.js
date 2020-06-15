@@ -1,6 +1,6 @@
 if (global.isInstall) {
   const script = "npm install -D compression-webpack-plugin"
-  require('../helpers/install')(script)
+  require('../helpers/shellExec')(script)
 }
 const CompressionPlugin = require('compression-webpack-plugin');
 

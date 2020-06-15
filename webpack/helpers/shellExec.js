@@ -1,5 +1,5 @@
 module.exports = function (script) {
   const shell = require('shelljs')
-  shell.echo(script)
+  console.log(script)
   shell.exec(script)
 }

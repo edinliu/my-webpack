@@ -1,6 +1,6 @@
 if (global.isInstall) {
   const script = "npm install -D postcss-loader precss autoprefixer cssnano @fullhuman/postcss-purgecss style-loader css-loader sass-loader node-sass"
-  require('../helpers/install')(script)
+  require('../helpers/shellExec')(script)
 }
 
 const cssRegex = /\.css$/

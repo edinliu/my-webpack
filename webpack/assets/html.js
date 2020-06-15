@@ -1,4 +1,4 @@
-if (global.isInstall) require('../helpers/install')("npm install -D html-webpack-plugin")
+if (global.isInstall) require('../helpers/shellExec')("npm install -D html-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 /**
  * @param fileName {string} export file's name

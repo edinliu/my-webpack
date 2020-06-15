@@ -1,6 +1,6 @@
 if (global.isInstall) {
   const script = "npm install -D imagemin imagemin-gifsicle imagemin-pngquant imagemin-svgo imagemin-mozjpeg file-loader img-loader"
-  require('../helpers/install')(script)
+  require('../helpers/shellExec')(script)
 }
 const imgPath = 'images/';
 const imageminGifsicle = require("imagemin-gifsicle");
