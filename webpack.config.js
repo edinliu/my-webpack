@@ -20,8 +20,10 @@ let config = {
 }
 module.exports = (env) => {
   global.isInstall = env === "install"
-  require('./webpack/assets/img-loader&file-loader&svgr')(config)
-  require('./webpack/scripts/babel-loader.react&styled-jsx')(config)
+  require('./webpack/assets/img-loader&file-loader')(config)
+  // require('./webpack/assets/img-loader&file-loader&svgr')(config)
+  require('./webpack/scripts/babel-loader.react')(config)
+  // require('./webpack/scripts/babel-loader.react&styled-jsx')(config)
   require('./webpack/assets/html')(config)
   // require('./webpack/settings/preact_alias')(config)//用dynamic-cdn會沒作用
   if (env === "prod" || global.isInstall) {
