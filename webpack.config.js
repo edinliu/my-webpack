@@ -34,7 +34,7 @@ module.exports = (env) => {
     require("./webpack/settings/devServer")(config)
     require('./webpack/styles/styleDevRules')(config)
     require('./webpack/styles/css&post-css_dev')(config)
-    require('./webpack/settings/react-router_browser-router2hash-router')(config)
+    require('./webpack/scripts/react-router_browser-router2hash-router')(config)
   }
   if (global.isInstall) {
     console.log("All package installed!!")
