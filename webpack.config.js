@@ -28,7 +28,6 @@ module.exports = (env) => {
     // require('./webpack/settings/dynamic-cdn')(config)
     require('./webpack/styles/styleProdRules')(config)
     // require('./webpack/scripts/compression')(config)
-    // require('./webpack/settings/rwd')(config)
   }
   if (env === "dev" || global.isInstall) {
     require("./webpack/settings/devServer")(config)
