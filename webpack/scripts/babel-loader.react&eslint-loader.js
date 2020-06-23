@@ -3,6 +3,7 @@ if (global.isInstall) {
   const scriptDev = "npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react eslint-loader eslint babel-eslint"
   require('../helpers/shellExec')(script)
   require('../helpers/shellExec')(scriptDev)
+  require('../helpers/shellExec')("npx install-peerdeps --dev eslint-config-airbnb")
 }
 
 module.exports = function babelReact(config) {
