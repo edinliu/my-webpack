@@ -20,22 +20,22 @@ let config = {
 }
 module.exports = (env) => {
   global.isInstall = env === "install"
-  require('./webpack/assets/img-loader&file-loader')(config)
   // require('./webpack/assets/img-loader&file-loader&svgr')(config)
-  require('./webpack/scripts/babel-loader.react')(config)
   // require('./webpack/scripts/babel-loader.react&styled-jsx')(config)
+  require('./webpack/scripts/babel-loader.react')(config)
+  require('./webpack/scripts/babel-loader.react&eslint-loader')(config)
   require('./webpack/assets/html')(config)
-  // require('./webpack/settings/preact_alias')(config)//用dynamic-cdn會沒作用
+  // require('./webpack/scripts/preact_alias')(config)//用dynamic-cdn會沒作用
   if (env === "prod" || global.isInstall) {
     // require('./webpack/settings/dynamic-cdn')(config)
     require('./webpack/styles/styleProdRules')(config)
-    // require('./webpack/scripts/compression')(config)
+    // require('./webpack/settings/compression')(config)
   }
   if (env === "dev" || global.isInstall) {
     require("./webpack/settings/devServer")(config)
     require('./webpack/styles/styleDevRules')(config)
     require('./webpack/styles/css&post-css_dev')(config)
-    require('./webpack/scripts/react-router_browser-router2hash-router')(config)
+    require('./webpack/scripts/source-map')(config)
   }
   if (global.isInstall) {
     console.log("All package installed!!")
