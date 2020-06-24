@@ -1,6 +1,10 @@
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+/* eslint-disable no-param-reassign */
+
 if (global.isInstall) {
-  const script = "npm install -D postcss-loader precss autoprefixer style-loader css-loader"
-  require('../helpers/shellExec')(script)
+  const script = 'npm install -D postcss-loader precss autoprefixer style-loader css-loader';
+  require('../helpers/shellExec')(script);
 }
 
 const cssRegex = /\.css$/;
@@ -10,11 +14,11 @@ const postCssConfig = {
   options: {
     ident: 'postcss',
     plugins: [
-      require('precss'),
-      require('autoprefixer'),
+      require('precss'), // eslint-disable-line import/no-extraneous-dependencies
+      require('autoprefixer'), // eslint-disable-line import/no-extraneous-dependencies
     ],
   },
-}
+};
 
 module.exports = function (config) {
   config.module.rules.push(
@@ -24,16 +28,16 @@ module.exports = function (config) {
       use: [
         {
           loader: 'style-loader',
-          options: { attributes: { srcType: 'css' } }
+          options: { attributes: { srcType: 'css' } },
         },
         {
           loader: 'css-loader',
           options: {
             importLoaders: 1,
-          }
+          },
         },
-        postCssConfig
-      ]
-    }
-  )
-}
+        postCssConfig,
+      ],
+    },
+  );
+};

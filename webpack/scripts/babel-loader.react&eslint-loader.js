@@ -1,9 +1,12 @@
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+
 if (global.isInstall) {
-  const script = "npm install react react-dom"
-  const scriptDev = "npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react eslint-loader eslint babel-eslint"
-  require('../helpers/shellExec')(script)
-  require('../helpers/shellExec')(scriptDev)
-  require('../helpers/shellExec')("npx install-peerdeps --dev eslint-config-airbnb")
+  const script = 'npm install react react-dom';
+  const scriptDev = 'npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react eslint-loader eslint babel-eslint';
+  require('../helpers/shellExec')(script);
+  require('../helpers/shellExec')(scriptDev);
+  require('../helpers/shellExec')('npx install-peerdeps --dev eslint-config-airbnb');
 }
 
 module.exports = function babelReact(config) {
@@ -12,15 +15,18 @@ module.exports = function babelReact(config) {
     exclude: /node_modules/,
     use: [
       {
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
           presets: [
-            "@babel/preset-env",
-            "@babel/preset-react"
-          ]
-        }
+            '@babel/preset-env',
+            '@babel/preset-react',
+          ],
+        },
       },
-      "eslint-loader"
-    ]
-  })
-}
+      {
+        loader: 'eslint-loader',
+        options: { fix: true },
+      },
+    ],
+  });
+};

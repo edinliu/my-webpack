@@ -1,12 +1,17 @@
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+/* eslint-disable no-param-reassign */
+/* eslint-disable import/no-extraneous-dependencies */
+
 if (global.isInstall) {
-  const script = "npm install -D postcss-loader precss autoprefixer cssnano @fullhuman/postcss-purgecss style-loader css-loader sass-loader node-sass"
-  require('../helpers/shellExec')(script)
+  const script = 'npm install -D postcss-loader precss autoprefixer cssnano @fullhuman/postcss-purgecss style-loader css-loader sass-loader node-sass';
+  require('../helpers/shellExec')(script);
 }
 
-const cssRegex = /\.css$/
-const cssModuleRegex = /\.module\.css$/
-const sassRegex = /\.(scss|sass)$/
-const sassModuleRegex = /\.module\.(scss|sass)$/
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
 const postCssConfig = {
   loader: 'postcss-loader',
   options: {
@@ -19,18 +24,18 @@ const postCssConfig = {
           discardComments: {
             removeAll: true,
           },
-        }]
+        }],
       }),
       require('@fullhuman/postcss-purgecss')({
         content: [
           './src/*.js',
           './src/components/*.js',
-          './src/pages/*.js'
-        ]
-      })
+          './src/pages/*.js',
+        ],
+      }),
     ],
   },
-}
+};
 
 const cssRule = {
   test: cssRegex,
@@ -41,11 +46,11 @@ const cssRule = {
       loader: 'css-loader',
       options: {
         importLoaders: 1,
-      }
+      },
     },
     postCssConfig,
-  ]
-}
+  ],
+};
 const cssModuleRule = {
   test: cssModuleRegex,
   use: [
@@ -58,11 +63,11 @@ const cssModuleRule = {
           localIdentName: '[hash:base64:5]',
         },
         importLoaders: 1,
-      }
+      },
     },
     postCssConfig,
-  ]
-}
+  ],
+};
 const sassRule = {
   test: sassRegex,
   exclude: sassModuleRegex,
@@ -72,12 +77,12 @@ const sassRule = {
       loader: 'css-loader',
       options: {
         importLoaders: 1,
-      }
+      },
     },
     postCssConfig,
-    'sass-loader'
-  ]
-}
+    'sass-loader',
+  ],
+};
 const sassModuleRule = {
   test: sassModuleRegex,
   use: [
@@ -90,17 +95,17 @@ const sassModuleRule = {
           localIdentName: '[hash:base64:5]',
         },
         importLoaders: 1,
-      }
+      },
     },
     postCssConfig,
     'sass-loader',
   ],
-}
+};
 module.exports = function styleRulesProd(config) {
   config.module.rules.push(
     cssRule,
     cssModuleRule,
     sassRule,
-    sassModuleRule
-  )
-}
+    sassModuleRule,
+  );
+};

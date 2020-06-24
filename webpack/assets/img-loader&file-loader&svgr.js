@@ -1,10 +1,15 @@
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+/* eslint-disable no-param-reassign */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console */
 if (global.isInstall) {
-  const script = "npm install -D imagemin imagemin-gifsicle imagemin-pngquant imagemin-mozjpeg @svgr/webpack file-loader url-loader img-loader"
-  require('../helpers/shellExec')(script)
+  const script = 'npm install -D imagemin imagemin-gifsicle imagemin-pngquant imagemin-mozjpeg @svgr/webpack file-loader url-loader img-loader';
+  require('../helpers/shellExec')(script);
 }
 const imgPath = 'images/';
-const imageminGifsicle = require("imagemin-gifsicle");
-const imageminPngquant = require("imagemin-pngquant");
+const imageminGifsicle = require('imagemin-gifsicle');
+const imageminPngquant = require('imagemin-pngquant');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 
 module.exports = function (config) {
@@ -25,7 +30,7 @@ module.exports = function (config) {
         {
           loader: 'url-loader',
           options: {
-            name: imgPath + '[name].[ext]',
+            name: `${imgPath}[name].[ext]`,
             limit: false,
           },
         },
@@ -34,20 +39,20 @@ module.exports = function (config) {
           options: {
             plugins: [
               imageminGifsicle({
-                interlaced: false
+                interlaced: false,
               }),
               imageminMozjpeg({
                 progressive: true,
-                arithmetic: false
+                arithmetic: false,
               }),
               imageminPngquant({
                 floyd: 0.5,
-                speed: 2
-              })
-            ]
-          }
-        }
-      ]
-    }
-  )
-}
+                speed: 2,
+              }),
+            ],
+          },
+        },
+      ],
+    },
+  );
+};

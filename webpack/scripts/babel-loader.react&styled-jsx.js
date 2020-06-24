@@ -1,8 +1,11 @@
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+
 if (global.isInstall) {
-  const script = "npm install react react-dom"
-  const scriptDev = "npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react styled-jsx"
-  require('../helpers/shellExec')(script)
-  require('../helpers/shellExec')(scriptDev)
+  const script = 'npm install react react-dom';
+  const scriptDev = 'npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react styled-jsx';
+  require('../helpers/shellExec')(script);
+  require('../helpers/shellExec')(scriptDev);
 }
 
 module.exports = function babelReact(config) {
@@ -11,17 +14,17 @@ module.exports = function babelReact(config) {
     exclude: /node_modules/,
     use: [
       {
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
           presets: [
-            "@babel/preset-env",
-            "@babel/preset-react"
+            '@babel/preset-env',
+            '@babel/preset-react',
           ],
           plugins: [
-            "styled-jsx/babel"
-          ]
-        }
-      }
-    ]
-  })
-}
+            'styled-jsx/babel',
+          ],
+        },
+      },
+    ],
+  });
+};

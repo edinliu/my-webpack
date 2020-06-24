@@ -1,4 +1,9 @@
-if (global.isInstall) require('../helpers/shellExec')("npm install -D html-webpack-plugin")
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+/* eslint-disable no-param-reassign */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console */
+if (global.isInstall) require('../helpers/shellExec')('npm install -D html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 /**
  * @param fileName {string} export file's name
@@ -7,7 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 function newHtmlWebpackPlugin(fileName, template) {
   return new HtmlWebpackPlugin({
     filename: fileName,
-    template: template,
+    template,
     minify: {
       collapseWhitespace: true,
       removeComments: true,
@@ -16,14 +21,13 @@ function newHtmlWebpackPlugin(fileName, template) {
       removeStyleLinkTypeAttributes: true,
       useShortDoctype: true,
       minifyCSS: true,
-      minifyJS: true
+      minifyJS: true,
     },
-    inject: true
-  })
+    inject: true,
+  });
 }
 module.exports = function (config) {
   config.plugins.push(
-    newHtmlWebpackPlugin("index.html", global.PATH.public + "/index.html"),
-  )
-}
-
+    newHtmlWebpackPlugin('index.html', `${global.PATH.public}/index.html`),
+  );
+};

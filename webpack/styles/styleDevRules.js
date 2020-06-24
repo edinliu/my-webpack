@@ -1,6 +1,11 @@
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+/* eslint-disable no-param-reassign */
+/* eslint-disable import/no-extraneous-dependencies */
+
 if (global.isInstall) {
-  const script = "npm install -D postcss-loader precss autoprefixer style-loader css-loader sass-loader node-sass"
-  require('../helpers/shellExec')(script)
+  const script = 'npm install -D postcss-loader precss autoprefixer style-loader css-loader sass-loader node-sass';
+  require('../helpers/shellExec')(script);
 }
 
 const cssModuleRegex = /\.module\.css$/;
@@ -16,13 +21,30 @@ const postCssConfig = {
       require('autoprefixer'),
     ],
   },
-}
+};
+const cssRule = {
+  test: cssRegex,
+  exclude: cssModuleRegex,
+  use: [
+    {
+      loader: 'style-loader',
+      options: { attributes: { srcType: 'css' } },
+    },
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 1,
+      },
+    },
+    postCssConfig,
+  ],
+};
 const cssModuleRule = {
   test: cssModuleRegex,
   use: [
     {
       loader: 'style-loader',
-      options: { attributes: { srcType: 'cssModule' } }
+      options: { attributes: { srcType: 'cssModule' } },
     },
     {
       loader: 'css-loader',
@@ -31,36 +53,36 @@ const cssModuleRule = {
           mode: 'local',
           localIdentName: '[path]_[name]__[local]--[hash:base64:5]',
         },
-        importLoaders: 1
-      }
+        importLoaders: 1,
+      },
     },
-    postCssConfig
-  ]
-}
+    postCssConfig,
+  ],
+};
 const sassRule = {
   test: sassRegex,
   exclude: sassModuleRegex,
   use: [
     {
       loader: 'style-loader',
-      options: { attributes: { srcType: 'sass' } }
+      options: { attributes: { srcType: 'sass' } },
     },
     {
       loader: 'css-loader',
       options: {
         importLoaders: 1,
-      }
+      },
     },
     postCssConfig,
-    'sass-loader'
-  ]
-}
+    'sass-loader',
+  ],
+};
 const sassModuleRule = {
   test: sassModuleRegex,
   use: [
     {
       loader: 'style-loader',
-      options: { attributes: { srcType: 'sassModule' } }
+      options: { attributes: { srcType: 'sassModule' } },
     },
     {
       loader: 'css-loader',
@@ -69,17 +91,18 @@ const sassModuleRule = {
           mode: 'local',
           localIdentName: '[path]_[name]__[local]--[hash:base64:5]',
         },
-        importLoaders: 1
-      }
+        importLoaders: 1,
+      },
     },
     postCssConfig,
     'sass-loader',
   ],
-}
+};
 module.exports = function styleDevRules(config) {
   config.module.rules.push(
+    cssRule,
     cssModuleRule,
     sassRule,
-    sassModuleRule
-  )
-}
+    sassModuleRule,
+  );
+};

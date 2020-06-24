@@ -1,15 +1,20 @@
+/* eslint-disable global-require */
+/* eslint-disable func-names */
+/* eslint-disable no-param-reassign */
+
 if (global.isInstall) {
-  const script = "npm install -D html-webpack-plugin dynamic-cdn-webpack-plugin"
-  require('../helpers/shellExec')(script)
+  const script = 'npm install -D html-webpack-plugin dynamic-cdn-webpack-plugin';
+  require('../helpers/shellExec')(script);
 }
 
 const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');// eslint-disable-line
 
 module.exports = function (config) {
-  const isTrue = (element) => element === true
-  if (config.plugins.map(plugin => plugin instanceof HtmlWebpackPlugin).findIndex(isTrue) === -1) {
-    config.plugins.push(new HtmlWebpackPlugin())
+  const isTrue = (element) => element === true;
+  if (config.plugins.map((plugin) => plugin instanceof HtmlWebpackPlugin)
+    .findIndex(isTrue) === -1) {
+    config.plugins.push(new HtmlWebpackPlugin());
   }
-  config.plugins.push(new DynamicCdnWebpackPlugin())
-}
+  config.plugins.push(new DynamicCdnWebpackPlugin());
+};
