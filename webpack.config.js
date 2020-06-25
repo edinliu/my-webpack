@@ -36,7 +36,6 @@ module.exports = (env) => {
   if (env === 'dev' || global.isInstall) {
     require('./webpack/settings/devServer')(config);
     require('./webpack/styles/styleDevRules')(config);
-    require('./webpack/styles/css&post-css_dev')(config);
     require('./webpack/scripts/source-map')(config);
   }
   if (global.isInstall) {
