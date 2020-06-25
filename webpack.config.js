@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+/* eslint-disable */
 const path = require('path');
 
 global.PATH = {
