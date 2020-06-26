@@ -22,16 +22,16 @@ const config = {
 };
 module.exports = (env) => {
   global.isInstall = env === 'install';
+  require('./webpack/assets/html')(config);
+  require("./webpack/scripts/ts.react")(config)
+  require('./webpack/scripts/babel-loader.react')(config);
   // require('./webpack/assets/img-loader&file-loader&svgr')(config)
   // require('./webpack/scripts/babel-loader.react&styled-jsx')(config)
-  require('./webpack/scripts/babel-loader.react')(config);
   // require('./webpack/scripts/babel-loader.react&eslint-loader')(config);
-  require("./webpack/scripts/ts.react")(config)
-  require('./webpack/assets/html')(config);
   // require('./webpack/scripts/preact_alias')(config)//用dynamic-cdn會沒作用
   if (env === 'prod' || global.isInstall) {
-    // require('./webpack/settings/dynamic-cdn')(config)
     require('./webpack/styles/styleProdRules')(config);
+    // require('./webpack/settings/dynamic-cdn')(config)
     // require('./webpack/settings/compression')(config)
   }
   if (env === 'dev' || global.isInstall) {
@@ -44,6 +44,5 @@ module.exports = (env) => {
     console.log('All package installed!!');
     process.exit();
   }
-  console.log(config)
   return config;
 };
