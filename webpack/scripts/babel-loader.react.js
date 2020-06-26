@@ -8,7 +8,7 @@ if (global.isInstall) {
 
 module.exports = function babelReact(config) {
   config.module.rules.push({
-    test: /\.js?x$/,
+    test: /\.(js|jsx)$/,
     exclude: /node_modules/,
     use: [
       {

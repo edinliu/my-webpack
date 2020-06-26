@@ -43,5 +43,6 @@ module.exports = (env) => {
     console.log('All package installed!!');
     process.exit();
   }
+  console.log(config);
   return config;
 };
