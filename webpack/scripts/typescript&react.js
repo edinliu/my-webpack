@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+/* eslint-disable */
 if (global.isInstall) {
   const script = 'npm install react react-dom';
   const scriptDev = 'npm install --save-dev @types/react @types/react-dom typescript ts-loader';
