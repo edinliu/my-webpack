@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import './index.sass'
 import AnimePic from './anime.jpg'
 
-console.log("js")
+console.log("ts")
 
-function Index(props) {
+function Index(props: { title: string }) {
   return (
     <>
       <img src={AnimePic} alt="" />

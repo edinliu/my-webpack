@@ -1,6 +1,7 @@
-/* eslint-disable global-require */
-/* eslint-disable func-names */
-/* eslint-disable no-param-reassign */
-module.exports = function (config) {
-  config.devtool = 'source-map';
-};
+/* eslint-disable */
+module.exports = {
+  install: function () { },
+  config: function () {
+    global.config.devtool = 'source-map';
+  }
+}

@@ -3,16 +3,17 @@ const path = require('path');
 
 global.PATH = {
   src: 'src',
+  imgPath: 'images/',
   public: 'public',
   build: 'build',
 };
-const config = {
+global.config = {
   entry: {
-    index: path.resolve(global.PATH.src, 'index.tsx'),
+    index: path.resolve(global.PATH.src, 'index.tsx')
   },
   output: {
     path: path.resolve(global.PATH.build),
-    filename: '[name].js',
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [],
@@ -21,27 +22,40 @@ const config = {
   resolve: { alias: {} },
 };
 module.exports = (env) => {
-  global.isInstall = env === 'install';
-  require('./webpack/assets/html')(config);
-  require("./webpack/scripts/typescript&react")(config)
-  require('./webpack/scripts/babel-loader&react')(config);
-  // require('./webpack/assets/img-loader&file-loader&svgr')(config)
-  // require('./webpack/scripts/babel-loader&react&styled-jsx')(config)
-  // require('./webpack/scripts/babel-loader&react&eslint-loader')(config);
-  // require('./webpack/scripts/preact_alias')(config)//用dynamic-cdn會沒作用
-  if (env === 'prod' || global.isInstall) {
-    require('./webpack/styles/styleProdRules')(config);
-    // require('./webpack/settings/dynamic-cdn')(config)
-    // require('./webpack/settings/compression')(config)
+  const generalConfig = [
+    require('./webpack/assets/html'),
+    require("./webpack/scripts/typescript&react"),
+    require('./webpack/scripts/babel-loader&react'),
+    require('./webpack/assets/img-loader&file-loader'),
+    // require('./webpack/assets/img-loader&file-loader&svgr'),
+    // require('./webpack/scripts/babel-loader&react&styled-jsx'),
+    // require('./webpack/scripts/babel-loader&react&eslint-loader'),
+    // require('./webpack/scripts/preact_alias'),//用dynamic-cdn會沒作用
+  ]
+  const devConfig = [
+    require('./webpack/styles/styleDevRules'),
+    require('./webpack/scripts/source-map'),
+    // require('./webpack/settings/devServer'),
+  ]
+  const prodConfig = [
+    require('./webpack/styles/styleProdRules'),
+    // require('./webpack/settings/dynamic-cdn'),
+    // require('./webpack/settings/compression'),
+  ]
+  if (env === 'dev') {
+    for (let i = 0; i < generalConfig.length; i++) generalConfig[i].config()
+    for (let i = 0; i < devConfig.length; i++) devConfig[i].config()
   }
-  if (env === 'dev' || global.isInstall) {
-    require('./webpack/settings/devServer')(config);
-    require('./webpack/styles/styleDevRules')(config);
-    require('./webpack/scripts/source-map')(config);
+  if (env === 'prod') {
+    for (let i = 0; i < generalConfig.length; i++) generalConfig[i].config()
+    for (let i = 0; i < prodConfig.length; i++) prodConfig[i].config()
   }
-  if (global.isInstall) {
+  if (env === 'install') {
+    for (let i = 0; i < generalConfig.length; i++) generalConfig[i].install()
+    for (let i = 0; i < devConfig.length; i++) devConfig[i].install()
+    for (let i = 0; i < prodConfig.length; i++) prodConfig[i].install()
     console.log('All package installed!!');
     process.exit();
   }
-  return config;
+  return global.config;
 };
