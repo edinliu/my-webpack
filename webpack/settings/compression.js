@@ -1,12 +1,10 @@
-/* eslint-disable global-require */
-/* eslint-disable func-names */
-
-if (global.isInstall) {
-  const script = 'npm install -D compression-webpack-plugin';
-  require('../helpers/shellExec')(script);
+/* eslint-disable */
+module.exports = {
+  install: function () {
+    require('../helpers/install-D')(['compression-webpack-plugin'])
+  },
+  config: function () {
+    const CompressionPlugin = require('compression-webpack-plugin');
+    config.plugins.push(new CompressionPlugin());
+  }
 }
-const CompressionPlugin = require('compression-webpack-plugin');
-
-module.exports = function (config) {
-  config.plugins.push(new CompressionPlugin());
-};

@@ -1,30 +1,27 @@
-/* eslint-disable global-require */
-/* eslint-disable func-names */
-
-if (global.isInstall) {
-  const script = 'npm install react react-dom';
-  const scriptDev = 'npm install -D @babel/core babel-loader @babel/preset-env @babel/preset-react styled-jsx';
-  require('../helpers/shellExec')(script);
-  require('../helpers/shellExec')(scriptDev);
-}
-
-module.exports = function babelReact(config) {
-  config.module.rules.push({
-    test: /\.js$/,
-    exclude: /node_modules/,
-    use: [
-      {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            '@babel/preset-env',
-            '@babel/preset-react',
-          ],
-          plugins: [
-            'styled-jsx/babel',
-          ],
+/* eslint-disable */
+module.exports = {
+  install: function () {
+    require('../helpers/install')(['react', 'react-dom'])
+    require('../helpers/install-D')(['@babel/core', 'babel-loader', '@babel/preset-env', '@babel/preset-react', 'styled-jsx'])
+  },
+  config: function () {
+    config.module.rules.push({
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+            ],
+            plugins: [
+              'styled-jsx/babel',
+            ],
+          },
         },
-      },
-    ],
-  });
-};
+      ],
+    });
+  }
+}

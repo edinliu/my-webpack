@@ -2,21 +2,22 @@
 module.exports = {
   install: function () {
     require('../helpers/install-D')(['imagemin', 'imagemin-gifsicle', 'imagemin-pngquant',
-      'imagemin-svgo', 'imagemin-mozjpeg', 'file-loader', 'img-loader'])
+      'imagemin-svgo', 'imagemin-mozjpeg', 'file-loader', 'url-loader', 'img-loader'])
   },
   config: function () {
     const imageminGifsicle = require('imagemin-gifsicle');
     const imageminPngquant = require('imagemin-pngquant');
-    const imageminSvgo = require('imagemin-svgo');
     const imageminMozjpeg = require('imagemin-mozjpeg');
+    const imageminSvgo = require('imagemin-svgo');
     global.config.module.rules.push(
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-              name: `${global.imgPath}[name].[ext]`,
+              name: `${global.PATH.imgPath}[name].[ext]`,
+              limit: false,
             },
           },
           {
