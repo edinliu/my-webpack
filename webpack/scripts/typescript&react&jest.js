@@ -2,7 +2,7 @@
 module.exports = {
   install: function () {
     require('../helpers/install')(['react', 'react-dom'])
-    require('../helpers/install-D')(['@types/react', '@types/react-dom', 'typescript', 'ts-loader'])
+    require('../helpers/install-D')(['@types/react', '@types/react-dom', 'typescript', 'ts-loader', '@testing-library/react', '@testing-library/jest-dom'])// '@types/jest'
   },
   config: function () {
     global.config.resolve.extensions = [".wasm", ".ts", ".tsx", ".mjs", ".cjs", ".js", ".json"]

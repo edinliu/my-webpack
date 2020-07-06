@@ -1,18 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.sass'
-import { artJpg, Apple } from './images'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-console.log("ts")
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-function Index(props: { title: string }) {
-  return (
-    <>
-      <Apple />
-      <img src={artJpg} alt="" />
-      <h1>{props.title}</h1>
-    </>
-  )
-}
-
-ReactDOM.render(<Index title="Hello" />, document.querySelector("#root"))
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.register();

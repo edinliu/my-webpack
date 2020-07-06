@@ -1,5 +1,6 @@
 /* eslint-disable */
+const shell = require('shelljs');
+
 module.exports = function (script) {
-  const shell = require('shelljs');
   shell.exec(script);
 };
