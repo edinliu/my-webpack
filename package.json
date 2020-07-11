@@ -4,8 +4,7 @@
   "scripts": {
     "build": "webpack --mode production --env=prod",
     "start": "webpack-dev-server --mode development --env=dev",
-    "install-webpack": "webpack --env=install",
-    "update-config": "node scripts/updateConfig.js"
+    "install-webpack": "webpack --env=install"
   },
   "dependencies": {},
   "devDependencies": {
