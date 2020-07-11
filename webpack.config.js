@@ -30,6 +30,7 @@ module.exports = (env) => {
     require('./webpack/assets/url-loader&img-loader'),
     // require('./webpack/assets/url-loader&img-loader&svgr'),
     // require('./webpack/scripts/preact_alias'),//假如跟dynamic-cdn一起使用，preact不會取代react
+    require('./webpack/scripts/eslint'),
   ]
   const devConfig = [
     require('./webpack/styles/styleDevRules'),

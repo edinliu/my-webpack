@@ -5,6 +5,6 @@ module.exports = {
   },
   config: function () {
     const CompressionPlugin = require('compression-webpack-plugin');
-    global.config.plugins.push(new CompressionPlugin());
+    config.plugins.push(new CompressionPlugin());
   }
 }
