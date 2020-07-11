@@ -2,7 +2,7 @@
   "includes": [
     "src",
     "src/components",
-    "webpack/lib/custom.d.ts"
+    "custom.d.ts"
   ],
   "compilerOptions": {
     "plugins": [
