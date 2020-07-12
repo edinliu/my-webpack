@@ -1,15 +1,14 @@
 /* eslint-disable */
 const path = require('path');
-
 global.PATH = {
   src: 'src',
   imgPath: 'images/',
-  public: 'public',
+  public: 'public/',
   build: 'build',
 };
 global.config = {
   entry: {
-    index: path.resolve(global.PATH.src, 'index.tsx')
+    index: path.resolve(global.PATH.src, 'index.jsx')
   },
   output: {
     path: path.resolve(global.PATH.build),
@@ -18,8 +17,12 @@ global.config = {
   module: {
     rules: [],
   },
-  plugins: [],
-  resolve: { alias: {} },
+  plugins: [
+  ],
+  resolve: {
+    alias: {},
+    extensions: ['.js', '.jsx'],
+  },
 };
 module.exports = (env) => {
   const generalConfig = [
@@ -27,10 +30,9 @@ module.exports = (env) => {
     require("./webpack/scripts/typescript&react"),
     // require('./webpack/scripts/babel-loader&react'),
     // require('./webpack/scripts/babel-loader&react&styled-jsx'),//在typescript中使用styled jsx會出錯
-    require('./webpack/assets/url-loader&img-loader'),
-    // require('./webpack/assets/url-loader&img-loader&svgr'),
+    // require('./webpack/assets/url-loader&img-loader'),
+    require('./webpack/assets/url-loader&img-loader&svgr'),
     // require('./webpack/scripts/preact_alias'),//假如跟dynamic-cdn一起使用，preact不會取代react
-    require('./webpack/scripts/eslint'),
   ]
   const devConfig = [
     require('./webpack/styles/styleDevRules'),

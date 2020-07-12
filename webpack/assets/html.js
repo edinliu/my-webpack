@@ -28,6 +28,9 @@ module.exports = {
     }
     global.config.plugins.push(
       newHtmlWebpackPlugin('index.html', `${global.PATH.public}/index.html`),
+      newHtmlWebpackPlugin('message_board.html', `${global.PATH.public}/index.html`),
+      newHtmlWebpackPlugin('for_print.html', `${global.PATH.public}/index.html`),
+      newHtmlWebpackPlugin('print_project.html', `${global.PATH.public}/index.html`),
     );
   }
 }
