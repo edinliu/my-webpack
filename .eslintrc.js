@@ -34,7 +34,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'linebreak-style': 'off',
+    'linebreak-style': 0,//'off'
   },
   settings: {
     'import/resolver': {
