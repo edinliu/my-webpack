@@ -21,7 +21,7 @@ global.config = {
   ],
   resolve: {
     alias: {},
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 };
 module.exports = (env) => {
@@ -33,6 +33,7 @@ module.exports = (env) => {
     // require('./webpack/assets/url-loader&img-loader'),
     require('./webpack/assets/url-loader&img-loader&svgr'),
     // require('./webpack/scripts/preact_alias'),//假如跟dynamic-cdn一起使用，preact不會取代react
+    require('./webpack/settings/bundle-analyzer'),
   ]
   const devConfig = [
     require('./webpack/styles/styleDevRules'),
@@ -43,7 +44,7 @@ module.exports = (env) => {
   const prodConfig = [
     require('./webpack/settings/copy-file'),
     require('./webpack/styles/styleProdRules'),
-    // require('./webpack/settings/dynamic-cdn'),
+    require('./webpack/settings/dynamic-cdn'),
     // require('./webpack/settings/compression'),//產生.gz
   ]
   if (env === 'dev') {
