@@ -5,7 +5,7 @@ module.exports = {
     require('../helpers/install-D')(['@babel/core', 'babel-loader', '@babel/preset-env', '@babel/preset-react', 'styled-jsx'])
   },
   config: function () {
-    config.module.rules.push({
+    global.config.module.rules.push({
       test: /\.js(x?)$/,
       exclude: /node_modules/,
       use: [

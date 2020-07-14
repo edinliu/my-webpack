@@ -21,24 +21,42 @@ global.config = {
   ],
   resolve: {
     alias: {},
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.wasm', '.mjs', '.cjs'],
   },
 };
-module.exports = (env) => {
+module.exports = (env, { mode = 'development' }) => {
+  global.config.mode = mode;
   const generalConfig = [
+    /**
+      script
+    */
+    //ts
     require('./webpack/assets/html'),
-    require("./webpack/scripts/typescript&react"),
-    // require('./webpack/scripts/babel-loader&react'),
-    // require('./webpack/scripts/babel-loader&react&styled-jsx'),//在typescript中使用styled jsx會出錯
-    require('./webpack/assets/url-loader&img-loader'),
-    // require('./webpack/assets/url-loader&img-loader&svgr'),
+    require('./webpack/scripts/typescript__babel-loader__react__styled-components__source_map'),
+    // require('./webpack/scripts/typescript__babel-loader__react__styled-components'),
+    // require('./webpack/scripts/typescript__babel-loader__react'),
+    // require("./webpack/scripts/typescript__ts-loader__react"),
+    // require('./webpack/scripts/typescript__awesome-typescript-loader__react__jest'),//未完成
+    //js
+    // require('./webpack/scripts/javascript__babel-loader__react'),
+    // require('./webpack/scripts/javascript__babel-loader__react__styled-jsx'),
+    //other
     // require('./webpack/scripts/preact_alias'),//假如跟dynamic-cdn一起使用，preact不會取代react
+    /**
+      assets
+     */
+    require('./webpack/assets/url-loader&img-loader'),
+    require('./webpack/assets/url-loader&img-loader&svgr'),
+    /**
+      settings
+    */
     // require('./webpack/settings/bundle-analyzer'),
   ]
   const devConfig = [
     require('./webpack/styles/styleDevRules'),
     require('./webpack/scripts/source-map'),
-    // require('./webpack/settings/devServer'),//設定 port:3000
+    require('./webpack/settings/devServer'),
+    require('./webpack/settings/optimization_DEV'),
     // require('./webpack/scripts/react-hash-router-alias'),
   ]
   const prodConfig = [
