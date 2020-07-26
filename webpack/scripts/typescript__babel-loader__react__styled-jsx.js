@@ -1,7 +1,7 @@
 /* eslint-disable */
 module.exports = {
   install: function () {
-    require('../helpers/install')(['react', 'react-dom', '@babel/runtime'])
+    require('../helpers/install')(['react', 'react-dom', '@types/react', '@babel/runtime'])
     require('../helpers/install-D')([
       'babel-loader',
       '@babel/core',

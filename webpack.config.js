@@ -32,21 +32,22 @@ module.exports = (env, { mode = 'development' }) => {
     */
     //ts
     require('./webpack/assets/html'),
-    require('./webpack/scripts/typescript__babel-loader__react__styled-components__source_map'),
+    require('./webpack/scripts/typescript__babel-loader__react__styled-jsx'),
+    // require('./webpack/scripts/typescript__babel-loader__react__styled-components__source_map'),
     // require('./webpack/scripts/typescript__babel-loader__react__styled-components'),
     // require('./webpack/scripts/typescript__babel-loader__react'),
     // require("./webpack/scripts/typescript__ts-loader__react"),
     // require('./webpack/scripts/typescript__awesome-typescript-loader__react__jest'),//未完成
     //js
     // require('./webpack/scripts/javascript__babel-loader__react'),
-    // require('./webpack/scripts/javascript__babel-loader__react__styled-jsx'),
+    require('./webpack/scripts/javascript__babel-loader__react__styled-jsx'),
     //other
-    // require('./webpack/scripts/preact_alias'),//假如跟dynamic-cdn一起使用，preact不會取代react
+    require('./webpack/scripts/preact_alias'),//假如跟dynamic-cdn一起使用，preact不會取代react
     /**
       assets
      */
     require('./webpack/assets/url-loader&img-loader'),
-    require('./webpack/assets/url-loader&img-loader&svgr'),
+    // require('./webpack/assets/url-loader&img-loader&svgr'),
     /**
       settings
     */
